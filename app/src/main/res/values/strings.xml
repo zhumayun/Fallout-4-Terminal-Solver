@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Fallout 4 Terminal Solver</string>
 
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <!-- Main Activity Related Strings -->
+    <string name="main_activity_title_text">@string/app_name</string>
+    <string name="main_activity_start_button_text">Start</string>
+    <string name="main_activity_stats_button_text">Stats</string>
+    <string name="main_activity_about_button_text">About</string>
+
+    <!-- Input Words Activity Related Strings -->
+    <string name="input_words_activity_title_text">Input Terminal Words</string>
 </resources>

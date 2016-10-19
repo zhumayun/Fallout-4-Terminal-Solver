@@ -1,7 +1,74 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView
     android:background="@color/colorPrimary"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
-</FrameLayout>
+
+    <RelativeLayout
+        android:layout_gravity="center_vertical"
+        android:padding="@dimen/activity_padding"
+        android:layout_marginTop="@dimen/activity_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Title -->
+        <com.zainhumayun.fallout4terminalsolver.Views.CondensedTextView
+            android:id="@+id/main_activity_title_text"
+            style="@style/main_activity_title_style"
+            android:gravity="center_horizontal"
+            android:text="@string/main_activity_title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Buttons Container -->
+        <LinearLayout
+            android:id="@+id/main_activity_button_container"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/button_container_top_margin"
+            android:layout_below="@+id/main_activity_title_text"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Start Button -->
+            <com.zainhumayun.fallout4terminalsolver.Views.CondensedButton
+                android:id="@+id/main_activity_button_start"
+                android:padding="@dimen/activity_padding"
+                android:textSize="@dimen/button_text_size"
+                android:text="@string/main_activity_start_button_text"
+                android:paddingStart="@dimen/button_horizontal_padding"
+                android:paddingEnd="@dimen/button_horizontal_padding"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!-- Stats Button -->
+            <com.zainhumayun.fallout4terminalsolver.Views.CondensedTextView
+                android:id="@+id/main_activity_stats_button"
+                style="@style/main_activity_text_button_style"
+                android:text="@string/main_activity_stats_button_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!-- About Button -->
+            <com.zainhumayun.fallout4terminalsolver.Views.CondensedTextView
+                android:id="@+id/main_activity_about_button"
+                style="@style/main_activity_text_button_style"
+                android:text="@string/main_activity_about_button_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <!-- Bottom Logo -->
+        <!--
+        <ImageView
+            android:adjustViewBounds="true"
+            android:layout_below="@+id/main_activity_button_container"
+            android:src="@mipmap/vault_tec_logo"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+            -->
+    </RelativeLayout>
+</ScrollView>

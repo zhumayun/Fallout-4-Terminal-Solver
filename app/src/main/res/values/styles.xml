@@ -14,4 +14,36 @@
         <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
         <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
     </style>
+
+    <style name="all_caps_style">
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="main_activity_title_style" parent="all_caps_style">
+        <item name="android:textSize">48sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="main_activity_text_button_style" parent="all_caps_style">
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="activity_header_title_style" parent="all_caps_style">
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_marginTop">16dp</item>
+    </style>
+
+    <!-- For LinearLayout -->
+    <style name="control_bar_style">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:padding">@dimen/activity_padding</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
 </resources>
