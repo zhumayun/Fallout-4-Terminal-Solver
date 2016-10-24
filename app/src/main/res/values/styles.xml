@@ -42,8 +42,17 @@
     <!-- For LinearLayout -->
     <style name="control_bar_style">
         <item name="android:orientation">horizontal</item>
-        <item name="android:padding">@dimen/activity_padding</item>
+        <item name="android:paddingBottom">@dimen/activity_padding</item>
+        <item name="android:paddingStart">@dimen/activity_padding</item>
+        <item name="android:paddingEnd">@dimen/activity_padding</item>
+        <item name="android:paddingTop">4dp</item>
         <item name="android:background">@color/colorPrimaryDark</item>
         <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <style name="control_bar_button_style">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_weight">1</item>
     </style>
 </resources>
