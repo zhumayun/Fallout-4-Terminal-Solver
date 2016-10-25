@@ -1,4 +1,4 @@
-package com.zainhumayun.fallout4terminalsolver.Activities;
+package com.zainhumayun.fallout4terminalsolver.activities;
 
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;

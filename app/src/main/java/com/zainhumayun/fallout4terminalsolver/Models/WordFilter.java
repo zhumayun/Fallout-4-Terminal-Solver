@@ -1,4 +1,4 @@
-package com.zainhumayun.fallout4terminalsolver.Models;
+package com.zainhumayun.fallout4terminalsolver.models;
 
 /**
  * Model Class to contain information about likeness and the word

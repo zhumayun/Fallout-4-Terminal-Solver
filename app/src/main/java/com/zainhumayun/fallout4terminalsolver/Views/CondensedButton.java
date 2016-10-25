@@ -1,4 +1,4 @@
-package com.zainhumayun.fallout4terminalsolver.Views;
+package com.zainhumayun.fallout4terminalsolver.views;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -6,6 +6,9 @@ import android.util.AttributeSet;
 import android.widget.Button;
 
 public class CondensedButton extends Button {
+    private static final float ALPHA_ENABLED = 1f;
+    private static final float ALPHA_DISABLED = 0.2f;
+
     public CondensedButton(Context context){
         super(context);
     }
@@ -23,5 +26,11 @@ public class CondensedButton extends Button {
     private void setCustomFont(Context context){
         Typeface tf = Typeface.createFromAsset(context.getAssets(), "condensed.ttf");
         setTypeface(tf);
+    }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        setAlpha(enabled ? ALPHA_ENABLED : ALPHA_DISABLED);
     }
 }

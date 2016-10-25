@@ -14,7 +14,7 @@
         android:layout_height="wrap_content">
 
         <!-- Title -->
-        <com.zainhumayun.fallout4terminalsolver.Views.CondensedTextView
+        <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
             android:id="@+id/main_activity_title_text"
             style="@style/main_activity_title_style"
             android:gravity="center_horizontal"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content">
 
             <!-- Start Button -->
-            <com.zainhumayun.fallout4terminalsolver.Views.CondensedButton
+            <com.zainhumayun.fallout4terminalsolver.views.CondensedButton
                 android:id="@+id/main_activity_button_start"
                 android:padding="@dimen/activity_padding"
                 android:textSize="@dimen/button_text_size"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content" />
 
             <!-- Stats Button -->
-            <com.zainhumayun.fallout4terminalsolver.Views.CondensedTextView
+            <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
                 android:id="@+id/main_activity_stats_button"
                 style="@style/main_activity_text_button_style"
                 android:text="@string/main_activity_stats_button_text"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content" />
 
             <!-- About Button -->
-            <com.zainhumayun.fallout4terminalsolver.Views.CondensedTextView
+            <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
                 android:id="@+id/main_activity_about_button"
                 style="@style/main_activity_text_button_style"
                 android:text="@string/main_activity_about_button_text"

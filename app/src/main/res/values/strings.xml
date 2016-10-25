@@ -14,4 +14,7 @@
     <string name="button_text_back">Back</string>
     <string name="button_text_add">Add</string>
     <string name="button_text_next">Next</string>
+
+    <!-- Hints -->
+    <string name="input_row_edit_text_hint"><small><i>Enter Word</i></small></string>
 </resources>

@@ -1,4 +1,4 @@
-package com.zainhumayun.fallout4terminalsolver.Activities;
+package com.zainhumayun.fallout4terminalsolver.activities;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.support.v4.content.ContextCompat;

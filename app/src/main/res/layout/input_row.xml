@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorPrimaryDark"
+    android:layout_width="match_parent"
+    android:padding="4dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:layout_height="wrap_content">
+
+    <!-- Input Area -->
+    <com.zainhumayun.fallout4terminalsolver.views.CondensedEditText
+        android:id="@+id/input_row_edit_text"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/input_row_close_button"
+        android:maxLines="1"
+        android:layout_alignParentStart="true"
+        android:textSize="32sp"
+        android:hint="@string/input_row_edit_text_hint"
+        android:textColor="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Delete Button -->
+    <ImageButton
+        android:layout_centerVertical="true"
+        android:id="@+id/input_row_close_button"
+        android:background="@drawable/circle_background"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_close"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
