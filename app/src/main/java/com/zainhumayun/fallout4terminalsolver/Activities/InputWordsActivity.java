@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.zainhumayun.fallout4terminalsolver.R;
 import com.zainhumayun.fallout4terminalsolver.inputrecyclerview.InputRecyclerViewAdapter;
@@ -44,8 +45,18 @@ public class InputWordsActivity extends HideActionBarActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(viewAdapter.shouldAddAnotherRow())
-                    viewAdapter.addRow();
+                viewAdapter.addRow();
+            }
+        });
+
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewAdapter.isDataValid()){
+
+                } else {
+                    Toast.makeText(InputWordsActivity.this, "Please make sure all words have the same length.", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

@@ -57,7 +57,6 @@
             android:drawableTop="@drawable/ic_right_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
             android:text="@string/button_text_next"/>
     </LinearLayout>
 </RelativeLayout>
