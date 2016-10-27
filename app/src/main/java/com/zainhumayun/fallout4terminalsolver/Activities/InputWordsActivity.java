@@ -80,7 +80,7 @@ public class InputWordsActivity extends HideActionBarActivity implements InputRe
         if(viewAdapter.getItemCount() == 0){
             super.onBackPressed();
             return;
-        } 
+        }
 
         // Ask if they want to leave
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
