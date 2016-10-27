@@ -17,4 +17,13 @@
 
     <!-- Hints -->
     <string name="input_row_edit_text_hint"><small><i>Enter Word</i></small></string>
+
+    <!-- Alert Dialog -->
+    <string name="alert_input_back_title_text">Go back?</string>
+    <string name="alert_input_back_content_text">Are you sure you want to go back? All current data will be lost.</string>
+    <string name="alert_input_yes">Yes</string>
+    <string name="alert_input_no">No</string>
+
+    <!-- Intent Strings -->
+    <string name="INTENT_KEY_INPUT_ITEMS">INPUT_ITEMS</string>
 </resources>

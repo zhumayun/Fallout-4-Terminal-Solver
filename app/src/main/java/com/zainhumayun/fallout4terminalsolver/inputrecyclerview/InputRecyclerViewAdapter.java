@@ -12,13 +12,20 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import com.zainhumayun.fallout4terminalsolver.R;
+
+import java.util.ArrayList;
 import java.util.List;
 
-public class InputRecyclerViewAdapter extends RecyclerView.Adapter<InputRecyclerViewAdapter.ViewHolder> implements ImageButton.OnClickListener {
+public class InputRecyclerViewAdapter extends RecyclerView.Adapter<InputRecyclerViewAdapter.ViewHolder> {
 
-    private List<StringInputItem> dataSet = null;
+    private List<StringInputItem> dataSet = new ArrayList<>();
+    private DataSetSizeChangedListener listener;
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements TextWatcher {
+    public interface DataSetSizeChangedListener{
+        void onNumberOfRowsChanged(int rows);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements TextWatcher, View.OnClickListener {
         private EditText input;
         private ImageButton closeButton;
         private StringInputItem inputString;
@@ -29,9 +36,8 @@ public class InputRecyclerViewAdapter extends RecyclerView.Adapter<InputRecycler
             closeButton = (ImageButton) itemView.findViewById(R.id.input_row_close_button);
         }
 
-        public void bind(int position, View.OnClickListener listener, final StringInputItem inputString){
-            closeButton.setOnClickListener(listener);
-            closeButton.setTag(position);
+        public void bind(final StringInputItem inputString){
+            closeButton.setOnClickListener(this);
             this.inputString = inputString;
             input.setText(inputString.getString());
             input.addTextChangedListener(this);
@@ -62,18 +68,23 @@ public class InputRecyclerViewAdapter extends RecyclerView.Adapter<InputRecycler
             inputString.setString(s.toString()); // updates reference in outside adapter
         }
 
+        @Override
+        public void onClick(View v) {
+            InputRecyclerViewAdapter.this.removeRow(getAdapterPosition());
+        }
+
         public void focus(){
             input.requestFocus();
         }
     }
 
-    public InputRecyclerViewAdapter(List<StringInputItem> dataSet){
-        this.dataSet = dataSet;
+    public void setOnNumberOfRowsChangedListener(DataSetSizeChangedListener listener){
+        this.listener = listener;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.bind(position, this, dataSet.get(position));
+        holder.bind(dataSet.get(position));
 
         if(position == 0) {
             holder.focus();
@@ -91,15 +102,21 @@ public class InputRecyclerViewAdapter extends RecyclerView.Adapter<InputRecycler
         return dataSet == null ?  0 : dataSet.size();
     }
 
-    @Override
-    public void onClick(View v) {
-        final int viewHolderPosition = (int) v.getTag();
-        removeRow(viewHolderPosition);
-    }
-
     private void removeRow(int position){
         dataSet.remove(position);
         notifyItemRemoved(position);
+
+        if(listener != null)
+            listener.onNumberOfRowsChanged(getItemCount());
+    }
+
+    public ArrayList<String> getDataSet(){
+        ArrayList<String> stringItems = new ArrayList<>();
+
+        for(StringInputItem item : dataSet)
+            stringItems.add(item.getString());
+
+        return stringItems;
     }
 
     public void addRow(){
@@ -107,6 +124,9 @@ public class InputRecyclerViewAdapter extends RecyclerView.Adapter<InputRecycler
 
         dataSet.add(0, new StringInputItem(""));
         notifyItemInserted(0);
+
+        if(listener != null)
+            listener.onNumberOfRowsChanged(getItemCount());
     }
 
     public boolean shouldAddAnotherRow(){

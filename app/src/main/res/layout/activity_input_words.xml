@@ -24,7 +24,7 @@
         android:layout_marginBottom="@dimen/list_vertical_margin"
         android:layout_below="@+id/input_words_activity_title"
         android:layout_above="@+id/control_bar"/>
-
+    
     <!-- Bottom Control Bar -->
     <LinearLayout
         style="@style/control_bar_style"
@@ -54,6 +54,7 @@
         <com.zainhumayun.fallout4terminalsolver.views.CondensedButton
             android:id="@+id/input_words_button_next"
             style="@style/control_bar_button_style"
+            android:enabled="false"
             android:drawableTop="@drawable/ic_right_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
