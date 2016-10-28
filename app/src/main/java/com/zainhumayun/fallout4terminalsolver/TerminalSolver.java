@@ -38,7 +38,7 @@ public class TerminalSolver {
 
     private boolean shouldKeep(WordFilter filter, String word){
         int similarChars = getNumberOfCharacterMatches(filter.getWord(), word);
-        return similarChars != 0 && similarChars == filter.getLikeness();
+        return similarChars == filter.getLikeness();
     }
 
     private int getNumberOfCharacterMatches(String s1, String s2){
@@ -58,5 +58,9 @@ public class TerminalSolver {
         if(!isSolved())
             return null;
         return wordsLeft.get(0);
+    }
+
+    public int getNumWordsLeft(){
+        return wordsLeft.size();
     }
 }
