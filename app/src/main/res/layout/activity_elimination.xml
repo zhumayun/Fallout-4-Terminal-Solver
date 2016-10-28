@@ -4,10 +4,62 @@
     android:id="@+id/activity_elimination"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/colorPrimary"
     tools:context="com.zainhumayun.fallout4terminalsolver.activities.EliminationActivity">
 
+    <!-- Activity Title -->
+    <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
+        android:id="@+id/word_elim_title_text"
+        style="@style/activity_header_title_style"
+        android:text="@string/word_elimination_activity_title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- Recycler view to show all eliminated words, words left, chosen words -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/word_elim_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/list_vertical_margin"
+        android:layout_marginBottom="@dimen/list_vertical_margin"
+        android:layout_below="@+id/word_elim_title_text"
+        android:layout_above="@+id/control_bar"/>
+
+    <!-- Bottom Control Bar -->
+    <LinearLayout
+        style="@style/control_bar_style"
+        android:id="@+id/control_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Back Button -->
+        <com.zainhumayun.fallout4terminalsolver.views.CondensedButton
+            android:id="@+id/word_elim_button_back"
+            style="@style/control_bar_button_style"
+            android:drawableTop="@drawable/ic_left_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_text_back"/>
+
+        <!-- Add Button -->
+        <com.zainhumayun.fallout4terminalsolver.views.CondensedButton
+            android:id="@+id/word_elim_button_undo"
+            style="@style/control_bar_button_style"
+            android:drawableTop="@drawable/ic_undo"
+            android:enabled="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_text_add"/>
+
+        <!-- Done Button -->
+        <com.zainhumayun.fallout4terminalsolver.views.CondensedButton
+            android:id="@+id/word_elim_button_restart"
+            style="@style/control_bar_button_style"
+            android:enabled="false"
+            android:drawableTop="@drawable/ic_restart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/button_text_next"/>
+    </LinearLayout>
 </RelativeLayout>

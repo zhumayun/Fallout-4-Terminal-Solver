@@ -9,6 +9,7 @@
 
     <!-- Input Words Activity Related Strings -->
     <string name="input_words_activity_title_text">Input Terminal Words</string>
+    <string name="word_elimination_activity_title_text">Word Elimination</string>
 
     <!-- Button Text -->
     <string name="button_text_back">Back</string>

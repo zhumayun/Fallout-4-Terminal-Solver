@@ -1,11 +1,9 @@
 package com.zainhumayun.fallout4terminalsolver.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.zainhumayun.fallout4terminalsolver.R;
 
-public class EliminationActivity extends AppCompatActivity {
+public class EliminationActivity extends HideActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
