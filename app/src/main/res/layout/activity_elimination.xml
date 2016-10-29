@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:text="@string/button_text_back"/>
 
-        <!-- Add Button -->
+        <!-- Undo Button -->
         <com.zainhumayun.fallout4terminalsolver.views.CondensedButton
             android:id="@+id/word_elim_button_undo"
             style="@style/control_bar_button_style"
@@ -50,9 +50,9 @@
             android:enabled="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_text_add"/>
+            android:text="@string/button_text_undo"/>
 
-        <!-- Done Button -->
+        <!-- Restart Button -->
         <com.zainhumayun.fallout4terminalsolver.views.CondensedButton
             android:id="@+id/word_elim_button_restart"
             style="@style/control_bar_button_style"
@@ -60,6 +60,6 @@
             android:drawableTop="@drawable/ic_restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_text_next"/>
+            android:text="@string/button_text_restart"/>
     </LinearLayout>
 </RelativeLayout>

@@ -55,7 +55,7 @@ public class TerminalSolverTest {
     public void zeroLikeness(){
         TerminalSolver solver = getSolverInstance(
                 "AAAA",
-                "BBBB",
+                "BBBB", // password
                 "CCCC",
                 "DDDD"
         );
@@ -77,5 +77,78 @@ public class TerminalSolverTest {
         solver.applyFilter(new WordFilter("MEAT", 0));
         assertTrue(solver.isSolved());
         assertEquals("TAEM", solver.getSolvedWord());
+    }
+
+    @Test
+    public void basicUndoTest(){
+        TerminalSolver solver = getSolverInstance(
+                "HEAT",
+                "KEEP",
+                "REAP",
+                "SOME",
+                "HATE" // password
+        );
+        solver.undo();
+        assertFalse(solver.isSolved());
+        assertFalse(solver.haveAppliedFilters());
+        assertEquals(0, solver.getHistoryDepth());
+
+        solver.applyFilter(new WordFilter("HEAT", 1));
+        assertTrue(solver.haveAppliedFilters());
+        assertEquals(2, solver.getNumWordsLeft());
+
+        solver.undo();
+        assertFalse(solver.haveAppliedFilters());
+        assertEquals(5, solver.getNumWordsLeft());
+    }
+
+    @Test
+    public void multipleUndo(){
+        TerminalSolver solver = getSolverInstance(
+                "HATE",
+                "HEAT",
+                "HAVE",
+                "REEK",
+                "KEEP",
+                "HEAP" // password
+        );
+
+        solver.applyFilter(new WordFilter("REEK", 1));
+        solver.applyFilter(new WordFilter("HEAT", 3));
+        assertTrue(solver.isSolved());
+        assertEquals("HEAP", solver.getSolvedWord());
+
+        solver.undo();
+        solver.undo();
+
+        assertFalse(solver.isSolved());
+        assertEquals(6, solver.getNumWordsLeft());
+
+        solver.applyFilter(new WordFilter("REEK", 1));
+        solver.applyFilter(new WordFilter("HEAT", 3));
+
+        assertTrue(solver.isSolved());
+        assertEquals("HEAP", solver.getSolvedWord());
+    }
+
+    @Test
+    public void basicRestart(){
+        TerminalSolver solver = getSolverInstance(
+                "AAAA",
+                "AAAB",
+                "AABB", // password
+                "ABBB",
+                "BBBB"
+        );
+
+        solver.restart();
+        assertEquals(5, solver.getNumWordsLeft());
+        solver.applyFilter(new WordFilter("BBBB", 2));
+        assertTrue(solver.isSolved());
+        assertEquals("AABB", solver.getSolvedWord());
+
+        solver.restart();
+        assertFalse(solver.isSolved());
+        assertEquals(5, solver.getNumWordsLeft());
     }
 }

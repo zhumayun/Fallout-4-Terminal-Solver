@@ -1,44 +1,75 @@
 package com.zainhumayun.fallout4terminalsolver;
 
+import android.support.annotation.NonNull;
 import com.zainhumayun.fallout4terminalsolver.models.WordFilter;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Container class that solves a Fallout Terminal puzzle
  **/
 public class TerminalSolver {
     private List<String> wordsLeft;
-    private List<WordFilter> filters = new ArrayList<>();
+    private List<String> backUp;
     private int wordSize = 0;
+    private SolverListener listener = null;
+    private Stack<History> historyStack = new Stack<>();
+
+    public interface SolverListener {
+        void onTerminalSolved(@NonNull String solvedWord);
+        void onUndoApplied(List<String> removedWords, WordFilter filter);
+        void onFilterApplied(List<String> removedWords, WordFilter filter);
+        void onRestarted();
+    }
 
     /**
      * Pass in the full list of words here
      **/
     public TerminalSolver(List<String> wordsLeft){
         this.wordsLeft = wordsLeft;
+        this.backUp = new ArrayList<>(wordsLeft);
         this.wordSize = wordsLeft.get(0).length();
     }
 
-    public void applyFilter(WordFilter filter){
-        Iterator<String> candidatesIterator = wordsLeft.iterator();
+    public void setSolverListener(SolverListener listener){
+        this.listener = listener;
+    }
 
-        while(candidatesIterator.hasNext()){
-            if(!shouldKeep(filter, candidatesIterator.next()))
-                candidatesIterator.remove();
-        }
-        // only add the filter if it's not the correct word
-        if(filter.getWord().length() != wordSize) {
+    public void applyFilter(WordFilter filter){
+        History historyItem = new History(filter);
+
+        if(filter.getLikeness() == wordSize){
+            wordsLeft = new ArrayList<>();
+            wordsLeft.add(filter.getWord());
+        } else {
+            Iterator<String> candidatesIterator = wordsLeft.iterator();
+
+            while (candidatesIterator.hasNext()) {
+                String word = candidatesIterator.next();
+                if (!shouldKeep(filter, word)) {
+                    historyItem.addRemovedWord(word);
+                    candidatesIterator.remove();
+                }
+            }
+
             wordsLeft.remove(filter.getWord());
-            filters.add(filter);
+        }
+
+        historyStack.push(historyItem);
+
+        if(listener != null){
+            listener.onFilterApplied(historyItem.removedWords, filter);
+            if(isSolved()) {
+                listener.onTerminalSolved(getSolvedWord());
+            }
         }
     }
 
     private boolean shouldKeep(WordFilter filter, String word){
         int similarChars = getNumberOfCharacterMatches(filter.getWord(), word);
-        return similarChars == filter.getLikeness();
+        return similarChars == filter.getLikeness() && !filter.getWord().equals(word);
     }
 
     private int getNumberOfCharacterMatches(String s1, String s2){
@@ -62,5 +93,48 @@ public class TerminalSolver {
 
     public int getNumWordsLeft(){
         return wordsLeft.size();
+    }
+
+    public int getHistoryDepth(){
+        return historyStack.size();
+    }
+
+    public void undo(){
+        if(getHistoryDepth() == 0)
+            return;
+
+        History historyItem = historyStack.pop();
+
+        wordsLeft.addAll(historyItem.removedWords);
+
+        if(listener != null){
+            listener.onUndoApplied(historyItem.removedWords, historyItem.filter);
+        }
+    }
+
+    public void restart(){
+        wordsLeft = new ArrayList<>(backUp);
+        historyStack = new Stack<>();
+
+        if(listener != null){
+            listener.onRestarted();
+        }
+    }
+
+    public boolean haveAppliedFilters(){
+        return getHistoryDepth() != 0;
+    }
+
+    private static class History {
+        private WordFilter filter;
+        private List<String> removedWords = new ArrayList<>();
+
+        public History(WordFilter filter){
+            this.filter = filter;
+        }
+
+        public void addRemovedWord(String word){
+            removedWords.add(word);
+        }
     }
 }
