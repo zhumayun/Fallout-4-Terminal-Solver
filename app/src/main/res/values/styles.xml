@@ -56,4 +56,17 @@
         <item name="android:paddingBottom">12dp</item>
         <item name="android:layout_weight">1</item>
     </style>
+
+    <style name="elim_row_size_style">
+        <item name="android:background">@color/colorPrimaryDark</item>
+        <item name="android:layout_marginTop">@dimen/row_vertical_margin</item>
+        <item name="android:layout_marginBottom">@dimen/row_vertical_margin</item>
+        <item name="android:paddingTop">@dimen/row_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/row_vertical_padding</item>
+    </style>
+
+    <style name="elim_row_text_style">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
 </resources>

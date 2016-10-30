@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.zainhumayun.fallout4terminalsolver.R;
 import com.zainhumayun.fallout4terminalsolver.TerminalSolver;
+import com.zainhumayun.fallout4terminalsolver.inputrecyclerview.EliminationRecyclerViewAdapter;
 import com.zainhumayun.fallout4terminalsolver.models.WordFilter;
 
 import java.util.List;
@@ -52,11 +53,14 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
         });
 
         Intent givenIntent = getIntent();
+        List<String> words = givenIntent.getStringArrayListExtra(getString(R.string.INTENT_KEY_INPUT_ITEMS));
 
-        solver = new TerminalSolver(givenIntent.getStringArrayListExtra(getString(R.string.INTENT_KEY_INPUT_ITEMS)));
+        solver = new TerminalSolver(words);
         solver.setSolverListener(this);
 
+        EliminationRecyclerViewAdapter adapter = new EliminationRecyclerViewAdapter(words);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
