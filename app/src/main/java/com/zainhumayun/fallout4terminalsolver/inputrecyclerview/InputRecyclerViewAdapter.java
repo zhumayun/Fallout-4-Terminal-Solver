@@ -1,5 +1,7 @@
 package com.zainhumayun.fallout4terminalsolver.inputrecyclerview;
 
+import android.content.Context;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -34,6 +37,8 @@ public class InputRecyclerViewAdapter extends RecyclerView.Adapter<InputRecycler
             super(itemView);
             input = (EditText) itemView.findViewById(R.id.input_row_edit_text);
             closeButton = (ImageButton) itemView.findViewById(R.id.input_row_close_button);
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                input.setShowSoftInputOnFocus(true);
         }
 
         public void bind(final StringInputItem inputString){

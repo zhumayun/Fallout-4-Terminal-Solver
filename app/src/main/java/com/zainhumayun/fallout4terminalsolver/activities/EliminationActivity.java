@@ -21,7 +21,7 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
     private Button backButton;
     private Button undoButton;
     private Button restartButton;
-    private TerminalSolver solver;
+    private EliminationRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +42,20 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
         undoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                solver.undo();
+                adapter.getSolver().undo();
             }
         });
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                solver.restart();
+                adapter.getSolver().restart();
             }
         });
 
         Intent givenIntent = getIntent();
         List<String> words = givenIntent.getStringArrayListExtra(getString(R.string.INTENT_KEY_INPUT_ITEMS));
 
-        solver = new TerminalSolver(words);
-        solver.setSolverListener(this);
-
-        EliminationRecyclerViewAdapter adapter = new EliminationRecyclerViewAdapter(words);
+        adapter = new EliminationRecyclerViewAdapter(words, this, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
@@ -71,7 +68,7 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
     @Override
     public void onUndoApplied(List<String> removedWords, WordFilter filter) {
         // TODO
-        final boolean shouldEnableActions = solver.getHistoryDepth() > 0;
+        final boolean shouldEnableActions = adapter.getSolver().getHistoryDepth() > 0;
         undoButton.setEnabled(shouldEnableActions);
         restartButton.setEnabled(shouldEnableActions);
     }

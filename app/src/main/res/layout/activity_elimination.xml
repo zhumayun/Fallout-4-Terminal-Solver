@@ -15,6 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
+        style="@style/activity_sub_title_text"
+        android:id="@+id/word_elim_sub_title"
+        android:layout_below="@+id/word_elim_title_text"
+        android:text="@string/word_elimination_activity_sub_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <!-- Recycler view to show all eliminated words, words left, chosen words -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/word_elim_recycler_view"
@@ -23,7 +31,7 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/list_vertical_margin"
         android:layout_marginBottom="@dimen/list_vertical_margin"
-        android:layout_below="@+id/word_elim_title_text"
+        android:layout_below="@+id/word_elim_sub_title"
         android:layout_above="@+id/control_bar"/>
 
     <!-- Bottom Control Bar -->

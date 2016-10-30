@@ -9,7 +9,10 @@
 
     <!-- Input Words Activity Related Strings -->
     <string name="input_words_activity_title_text">Input Terminal Words</string>
+
+    <!-- Word Elimination Activity Related Strings -->
     <string name="word_elimination_activity_title_text">Word Elimination</string>
+    <string name="word_elimination_activity_sub_title_text">Tap on items below</string>
 
     <!-- Button Text -->
     <string name="button_text_back">Back</string>
