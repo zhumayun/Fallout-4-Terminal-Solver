@@ -29,6 +29,8 @@
     <string name="alert_input_back_content_text">Are you sure you want to go back? All current data will be lost.</string>
     <string name="alert_input_yes">Yes</string>
     <string name="alert_input_no">No</string>
+    <string name="alert_done">Done</string>
+    <string name="alert_cancel">Cancel</string>
 
     <!-- Intent Strings -->
     <string name="INTENT_KEY_INPUT_ITEMS">INPUT_ITEMS</string>

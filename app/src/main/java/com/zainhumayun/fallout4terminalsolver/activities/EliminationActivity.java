@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.zainhumayun.fallout4terminalsolver.LikenessDialogFragment;
 import com.zainhumayun.fallout4terminalsolver.R;
 import com.zainhumayun.fallout4terminalsolver.TerminalSolver;
 import com.zainhumayun.fallout4terminalsolver.inputrecyclerview.EliminationRecyclerViewAdapter;
@@ -15,7 +16,7 @@ import com.zainhumayun.fallout4terminalsolver.models.WordFilter;
 
 import java.util.List;
 
-public class EliminationActivity extends HideActionBarActivity implements TerminalSolver.SolverListener {
+public class EliminationActivity extends HideActionBarActivity implements TerminalSolver.SolverListener, LikenessDialogFragment.DialogListener {
 
     private RecyclerView recyclerView;
     private Button backButton;
@@ -86,5 +87,16 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
     @Override
     public void onBackPressed() {
         super.onBackPressed(); // TODO
+    }
+
+    @Override
+    public void onLikenessConfirmed(int wordIndex, int likeness) {
+        adapter.onLikenessConfirmed(wordIndex, likeness);
+        undoButton.setEnabled(true);
+    }
+
+    @Override
+    public void onCancel() {
+        adapter.onCancel();
     }
 }

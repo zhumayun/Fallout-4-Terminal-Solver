@@ -2,13 +2,21 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:layout_marginTop="@dimen/activity_vertical_margin"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!-- Message Text -->
+    <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
+        android:id="@+id/dialog_likeness_counter"
+        android:text="0"
+        android:layout_gravity="center_horizontal"
+        android:textSize="42sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-
-    <!-- Seekbar -->
+    <!-- Seek bar -->
     <SeekBar
         android:id="@+id/dialog_likeness_seekbar"
         android:layout_width="match_parent"

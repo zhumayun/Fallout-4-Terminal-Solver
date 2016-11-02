@@ -99,6 +99,10 @@ public class TerminalSolver {
         return historyStack.size();
     }
 
+    public int getLikeness(){
+        return this.wordSize;
+    }
+
     public void undo(){
         if(getHistoryDepth() == 0)
             return;

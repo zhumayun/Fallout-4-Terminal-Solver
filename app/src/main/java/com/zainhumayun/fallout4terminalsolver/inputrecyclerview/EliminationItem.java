@@ -3,6 +3,7 @@ package com.zainhumayun.fallout4terminalsolver.inputrecyclerview;
 public class EliminationItem {
     private int viewType;
     private String word;
+    private int likeness;
 
     public EliminationItem(int viewType, String word){
         this.viewType = viewType;
@@ -28,4 +29,13 @@ public class EliminationItem {
     public void setWord(String word) {
         this.word = word;
     }
+
+    public int getLikeness() {
+        return likeness;
+    }
+
+    public void setLikeness(int likeness) {
+        this.likeness = likeness;
+    }
 }
+

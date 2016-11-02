@@ -135,7 +135,8 @@ public class InputRecyclerViewAdapter extends RecyclerView.Adapter<InputRecycler
     }
 
     public boolean shouldAddAnotherRow(){
-        return dataSet != null && (dataSet.isEmpty() || !dataSet.get(dataSet.size() - 1).getString().equals(""));
+        // get index 0 because new items are added to the front of dataset.
+        return dataSet != null && (dataSet.isEmpty() || !dataSet.get(0).getString().equals(""));
     }
 
     public boolean isDataValid(){

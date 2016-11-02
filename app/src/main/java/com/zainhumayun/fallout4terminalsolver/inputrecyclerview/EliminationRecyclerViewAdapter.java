@@ -1,6 +1,7 @@
 package com.zainhumayun.fallout4terminalsolver.inputrecyclerview;
 
-import android.app.Activity;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.zainhumayun.fallout4terminalsolver.LikenessDialogFragment;
 import com.zainhumayun.fallout4terminalsolver.R;
 import com.zainhumayun.fallout4terminalsolver.TerminalSolver;
 
@@ -17,7 +19,7 @@ import java.util.List;
 /**
  * Adapter for Word Elimination Screen
  **/
-public class EliminationRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class EliminationRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements LikenessDialogFragment.DialogListener {
 
     protected static final int WORD = 0;// word left
     protected static final int FILTER = 1; // word filter
@@ -27,7 +29,7 @@ public class EliminationRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
     private String TAG = "EliminationAdapter";
     private TerminalSolver solver;
     private List<EliminationItem> dataset = new ArrayList<>();
-    private Activity activity;
+    private AppCompatActivity activity;
 
     public class WordViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView textView;
@@ -47,7 +49,7 @@ public class EliminationRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
         }
     }
 
-    public EliminationRecyclerViewAdapter(List<String> words, TerminalSolver.SolverListener listener, Activity activity){
+    public EliminationRecyclerViewAdapter(List<String> words, TerminalSolver.SolverListener listener, AppCompatActivity activity){
         for(String word : words){
             dataset.add(new EliminationItem(word));
         }
@@ -58,7 +60,12 @@ public class EliminationRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
     }
 
     public void onViewHolderClicked(int position){
-        Log.i(TAG, "View Holder clicked: position = " + position);
+        LikenessDialogFragment dialogFragment = new LikenessDialogFragment();
+        Bundle args = new Bundle();
+        args.putInt(LikenessDialogFragment.BUNDLE_KEY_LIKENESS, solver.getLikeness());
+        args.putString(LikenessDialogFragment.BUNDLE_KEY_WORD, dataset.get(position).getWord());
+        dialogFragment.setArguments(args);
+        dialogFragment.show(activity.getSupportFragmentManager(), "Likeness");
     }
 
     @Override
@@ -96,5 +103,19 @@ public class EliminationRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
 
     public TerminalSolver getSolver(){
         return this.solver;
+    }
+
+    @Override
+    public void onLikenessConfirmed(int wordIndex, int likeness) {
+        // Change item to state "FILTER"
+        dataset.get(wordIndex).setViewType(FILTER);
+        dataset.get(wordIndex).setLikeness(likeness);
+
+        notifyItemChanged(wordIndex);
+    }
+
+    @Override
+    public void onCancel() {
+
     }
 }
