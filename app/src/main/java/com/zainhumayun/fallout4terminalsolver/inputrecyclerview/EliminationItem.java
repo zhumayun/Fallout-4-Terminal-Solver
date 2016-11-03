@@ -10,6 +10,11 @@ public class EliminationItem {
         this.word = word;
     }
 
+    public EliminationItem(int viewType, String word, int likeness){
+        this(viewType, word);
+        this.likeness = likeness;
+    }
+
     public EliminationItem(String word){
         this(EliminationRecyclerViewAdapter.WORD, word);
     }

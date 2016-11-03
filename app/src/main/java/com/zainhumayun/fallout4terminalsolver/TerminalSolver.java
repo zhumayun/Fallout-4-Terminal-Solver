@@ -54,7 +54,9 @@ public class TerminalSolver {
                 }
             }
 
-            wordsLeft.remove(filter.getWord());
+            if(wordSize != filter.getLikeness()) {
+                wordsLeft.remove(filter.getWord());
+            }
         }
 
         historyStack.push(historyItem);
@@ -69,7 +71,7 @@ public class TerminalSolver {
 
     private boolean shouldKeep(WordFilter filter, String word){
         int similarChars = getNumberOfCharacterMatches(filter.getWord(), word);
-        return similarChars == filter.getLikeness() && !filter.getWord().equals(word);
+        return similarChars == filter.getLikeness() || filter.getWord().equals(word);
     }
 
     private int getNumberOfCharacterMatches(String s1, String s2){
@@ -110,6 +112,7 @@ public class TerminalSolver {
         History historyItem = historyStack.pop();
 
         wordsLeft.addAll(historyItem.removedWords);
+        wordsLeft.add(historyItem.filter.getWord());
 
         if(listener != null){
             listener.onUndoApplied(historyItem.removedWords, historyItem.filter);

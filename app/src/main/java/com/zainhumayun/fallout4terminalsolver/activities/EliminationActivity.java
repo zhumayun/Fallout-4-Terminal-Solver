@@ -64,6 +64,7 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
     @Override
     public void onTerminalSolved(@NonNull String solvedWord) {
         // TODO
+        adapter.onTerminalSolved(solvedWord);
     }
 
     @Override
@@ -72,16 +73,20 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
         final boolean shouldEnableActions = adapter.getSolver().getHistoryDepth() > 0;
         undoButton.setEnabled(shouldEnableActions);
         restartButton.setEnabled(shouldEnableActions);
+
+        adapter.onUndoApplied(removedWords, filter);
     }
 
     @Override
     public void onFilterApplied(List<String> removedWords, WordFilter filter) {
         // TODO
+        adapter.onFilterApplied(removedWords, filter);
     }
 
     @Override
     public void onRestarted() {
         // TODO
+        adapter.onRestarted();
     }
 
     @Override

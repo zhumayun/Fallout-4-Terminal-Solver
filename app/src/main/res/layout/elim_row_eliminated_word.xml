@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/elim_row"
+    style="@style/elim_row_size_style"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
+        android:id="@+id/elim_row_text"
+        style="@style/elim_row_text_style"
+        android:textColor="@color/eliminatedColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</FrameLayout>

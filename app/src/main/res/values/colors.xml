@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#345985</color>
     <color name="colorAccent">#fdf070</color>
     <color name="hintColor">#a3a2a2</color>
+    <color name="filteredColor">#55d22c</color>
+    <color name="eliminatedColor">#bab9b9</color>
 </resources>
