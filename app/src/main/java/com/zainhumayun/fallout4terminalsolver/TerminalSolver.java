@@ -21,7 +21,7 @@ public class TerminalSolver {
         void onTerminalSolved(@NonNull String solvedWord);
         void onUndoApplied(List<String> removedWords, WordFilter filter);
         void onFilterApplied(List<String> removedWords, WordFilter filter);
-        void onRestarted();
+        void onRestarted(List<String> words);
     }
 
     /**
@@ -124,7 +124,7 @@ public class TerminalSolver {
         historyStack = new Stack<>();
 
         if(listener != null){
-            listener.onRestarted();
+            listener.onRestarted(wordsLeft);
         }
     }
 

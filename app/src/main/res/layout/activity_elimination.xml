@@ -23,16 +23,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <!-- Recycler view to show all eliminated words, words left, chosen words -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/word_elim_recycler_view"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/list_vertical_margin"
         android:layout_marginBottom="@dimen/list_vertical_margin"
         android:layout_below="@+id/word_elim_sub_title"
-        android:layout_above="@+id/control_bar"/>
+        android:layout_above="@+id/control_bar">
+
+        <!-- Recycler view to show all eliminated words, words left, chosen words -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/word_elim_recycler_view"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
 
     <!-- Bottom Control Bar -->
     <LinearLayout

@@ -26,7 +26,10 @@
 
     <!-- Alert Dialog -->
     <string name="alert_input_back_title_text">Go back?</string>
+    <string name="alert_restart_title_text">Restart the Solver?</string>
     <string name="alert_input_back_content_text">Are you sure you want to go back? All current data will be lost.</string>
+    <string name="alert_restart_content_text">Are you sure you want to restart the solver? You can\'t undo this.</string>
+    <string name="alert_elimination_back_content_text">Are you sure you want to go back to word input? Progress on this screen will be lost.</string>
     <string name="alert_input_yes">Yes</string>
     <string name="alert_input_no">No</string>
     <string name="alert_done">Done</string>
@@ -34,4 +37,7 @@
 
     <!-- Intent Strings -->
     <string name="INTENT_KEY_INPUT_ITEMS">INPUT_ITEMS</string>
+
+    <!-- Toast Strings -->
+    <string name="toast_solver_restarted">The solver has been reset.</string>
 </resources>

@@ -1,12 +1,15 @@
 package com.zainhumayun.fallout4terminalsolver.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.zainhumayun.fallout4terminalsolver.LikenessDialogFragment;
 import com.zainhumayun.fallout4terminalsolver.R;
@@ -49,7 +52,17 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
         restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.getSolver().restart();
+                AlertDialog.Builder builder = new AlertDialog.Builder(EliminationActivity.this);
+                builder.setTitle(R.string.alert_restart_title_text)
+                        .setMessage(R.string.alert_restart_content_text)
+                        .setPositiveButton(R.string.alert_input_yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                adapter.getSolver().restart();
+                            }
+                        })
+                        .setNegativeButton(R.string.alert_input_no, null)
+                        .show();
             }
         });
 
@@ -69,7 +82,6 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
 
     @Override
     public void onUndoApplied(List<String> removedWords, WordFilter filter) {
-        // TODO
         final boolean shouldEnableActions = adapter.getSolver().getHistoryDepth() > 0;
         undoButton.setEnabled(shouldEnableActions);
         restartButton.setEnabled(shouldEnableActions);
@@ -79,25 +91,41 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
 
     @Override
     public void onFilterApplied(List<String> removedWords, WordFilter filter) {
-        // TODO
+        final boolean shouldEnableActions = adapter.getSolver().getHistoryDepth() > 0;
+        undoButton.setEnabled(shouldEnableActions);
+        restartButton.setEnabled(shouldEnableActions);
+
         adapter.onFilterApplied(removedWords, filter);
     }
 
     @Override
-    public void onRestarted() {
-        // TODO
-        adapter.onRestarted();
+    public void onRestarted(List<String> words) {
+        undoButton.setEnabled(false);
+        restartButton.setEnabled(false);
+
+        adapter.onRestarted(words);
+
+        Toast.makeText(this, R.string.toast_solver_restarted, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed(); // TODO
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.alert_input_back_title_text)
+                .setMessage(R.string.alert_elimination_back_content_text)
+                .setPositiveButton(R.string.alert_input_yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        EliminationActivity.super.onBackPressed();
+                    }
+                })
+                .setNegativeButton(R.string.alert_input_no, null)
+                .show();
     }
 
     @Override
     public void onLikenessConfirmed(int wordIndex, int likeness) {
         adapter.onLikenessConfirmed(wordIndex, likeness);
-        undoButton.setEnabled(true);
     }
 
     @Override

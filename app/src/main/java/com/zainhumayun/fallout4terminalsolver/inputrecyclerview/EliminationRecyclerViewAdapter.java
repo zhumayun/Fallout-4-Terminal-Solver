@@ -9,12 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.zainhumayun.fallout4terminalsolver.LikenessDialogFragment;
 import com.zainhumayun.fallout4terminalsolver.R;
 import com.zainhumayun.fallout4terminalsolver.TerminalSolver;
 import com.zainhumayun.fallout4terminalsolver.models.WordFilter;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -204,9 +202,28 @@ public class EliminationRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
     }
 
     // Called from parent activity
+    // removedWords = words need to restore
+    // filter = word need to restore
     @Override
     public void onUndoApplied(List<String> removedWords, WordFilter filter) {
-        // TODO:
+        // Restore filter
+        // will need this index for notifyItemRemoved()
+        int filterIndex = filterWordsDataSet.indexOf(new EliminationItem(FILTER, filter.getWord(), filter.getLikeness()));
+        filterWordsDataSet.remove(filterIndex);
+        notifyItemRemoved(wordsLeftDataSet.size() + filterIndex);
+
+        // add it back to the normal word list
+        wordsLeftDataSet.add(new EliminationItem(filter.getWord()));
+        notifyItemInserted(wordsLeftDataSet.size() - 1);
+
+        // restore removed words
+        for(String removedWord : removedWords){
+            eliminatedWordsDataSet.remove(new EliminationItem(ELIMINATED, removedWord));
+            wordsLeftDataSet.add(new EliminationItem(removedWord));
+        }
+
+        notifyItemRangeChanged(0, wordsLeftDataSet.size());
+        notifyItemRangeChanged(wordsLeftDataSet.size() + filterWordsDataSet.size(), eliminatedWordsDataSet.size());
     }
 
     // Called from parent activity
@@ -227,18 +244,24 @@ public class EliminationRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
                 currentItem.setViewType(ELIMINATED);
                 eliminatedWordsDataSet.add(currentItem);
                 notifyItemInserted(getItemCount() - 1);
-                index--;
+            } else {
+                index++;
             }
-            index++;
         }
-
-        //notifyDataSetChanged();
     }
 
     // Called from parent activity
     @Override
-    public void onRestarted() {
-        // TODO:
+    public void onRestarted(List<String> words) {
+        wordsLeftDataSet.clear();
+        eliminatedWordsDataSet.clear();
+        filterWordsDataSet.clear();
+
+        for(String word : words){
+            wordsLeftDataSet.add(new EliminationItem(word));
+        }
+
+        notifyDataSetChanged();
     }
 
     // Called from parent activity

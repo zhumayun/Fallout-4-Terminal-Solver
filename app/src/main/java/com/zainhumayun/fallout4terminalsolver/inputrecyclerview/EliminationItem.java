@@ -42,5 +42,17 @@ public class EliminationItem {
     public void setLikeness(int likeness) {
         this.likeness = likeness;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof EliminationItem){
+            EliminationItem other = (EliminationItem) o;
+            // don't care about likeness
+            return other.viewType == this.viewType
+                    && other.word.equals(this.word);
+        } else {
+            return false;
+        }
+    }
 }
 

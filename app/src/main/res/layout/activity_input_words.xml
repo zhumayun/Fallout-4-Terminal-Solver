@@ -14,17 +14,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <!-- RecyclerView to hold added items -->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/input_words_input_recycler_view"
+    <FrameLayout
+        android:layout_centerInParent="true"
+        android:background="@color/colorAccent"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/list_vertical_margin"
         android:layout_marginBottom="@dimen/list_vertical_margin"
         android:layout_below="@+id/input_words_activity_title"
-        android:layout_above="@+id/control_bar"/>
-    
+        android:layout_above="@+id/control_bar">
+
+        <!-- RecyclerView to hold added items -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/input_words_input_recycler_view"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
     <!-- Bottom Control Bar -->
     <LinearLayout
         style="@style/control_bar_style"
