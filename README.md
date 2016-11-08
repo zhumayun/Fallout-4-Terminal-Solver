@@ -2,7 +2,17 @@
 
 ## About
 The Fallout 4 Terminal Solver Android app helps player's of the game [Fallout 4](https://en.wikipedia.org/wiki/Fallout_4) solve ('Hack')
-[Terminals](http://fallout.wikia.com/wiki/Terminal). Terminals are essential to finding loot, unlocking new areas, and leveling up your character.
+[Terminals](http://fallout.wikia.com/wiki/Terminal). Terminals are essential to finding loot, unlocking new areas, and leveling up your character. Below are a few screen shots of the app solving a Terminal.
+
+### Input Screen:
+<img src="input.png" width="300"/>
+
+### Elimination Screen:
+<img src="elim_none.png" width="300"/>
+
+### After Applying a Filter:
+<img src="elim_some.png" width="300"/>
+
 
 ## How Does Terminal Hacking Work?
 A typical locked Terminal in fallout 4 will look something like this:
