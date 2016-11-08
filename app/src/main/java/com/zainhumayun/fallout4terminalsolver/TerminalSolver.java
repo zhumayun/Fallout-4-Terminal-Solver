@@ -1,6 +1,5 @@
 package com.zainhumayun.fallout4terminalsolver;
 
-import android.support.annotation.NonNull;
 import com.zainhumayun.fallout4terminalsolver.models.WordFilter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,7 +17,7 @@ public class TerminalSolver {
     private Stack<History> historyStack = new Stack<>();
 
     public interface SolverListener {
-        void onTerminalSolved(@NonNull String solvedWord);
+        void onTerminalSolverFinished(String solvedWord);
         void onUndoApplied(List<String> removedWords, WordFilter filter);
         void onFilterApplied(List<String> removedWords, WordFilter filter);
         void onRestarted(List<String> words);
@@ -63,8 +62,8 @@ public class TerminalSolver {
 
         if(listener != null){
             listener.onFilterApplied(historyItem.removedWords, filter);
-            if(isSolved()) {
-                listener.onTerminalSolved(getSolvedWord());
+            if(isSolved() || couldNotSolve()) {
+                listener.onTerminalSolverFinished(getSolvedWord());
             }
         }
     }
@@ -91,6 +90,10 @@ public class TerminalSolver {
         if(!isSolved())
             return null;
         return wordsLeft.get(0);
+    }
+
+    public boolean couldNotSolve(){
+        return wordsLeft.size() == 0;
     }
 
     public int getNumWordsLeft(){

@@ -34,6 +34,12 @@
     <string name="alert_input_no">No</string>
     <string name="alert_done">Done</string>
     <string name="alert_cancel">Cancel</string>
+    <string name="alert_solver_finished_title_text">Finished</string>
+    <string name="alert_solver_finished_restart">Restart</string>
+    <string name="alert_solver_finished_home">home</string>
+    <string name="alert_solver_finished_input">Input</string>
+    <string name="alert_solver_finished_solved_text">Solver has found the word! It\'s %1$s</string>
+    <string name="alert_solver_finished_not_solved_text">The solver was unable to find the terminal password. Choose an option below to continue.</string>
 
     <!-- Intent Strings -->
     <string name="INTENT_KEY_INPUT_ITEMS">INPUT_ITEMS</string>

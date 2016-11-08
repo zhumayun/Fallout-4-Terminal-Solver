@@ -197,7 +197,7 @@ public class EliminationRecyclerViewAdapter extends RecyclerView.Adapter<Recycle
 
     // Called from parent activity
     @Override
-    public void onTerminalSolved(@NonNull String solvedWord) {
+    public void onTerminalSolverFinished(String solvedWord) {
 
     }
 

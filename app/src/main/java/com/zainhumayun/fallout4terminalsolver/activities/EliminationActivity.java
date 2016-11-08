@@ -3,12 +3,12 @@ package com.zainhumayun.fallout4terminalsolver.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.zainhumayun.fallout4terminalsolver.LikenessDialogFragment;
@@ -75,9 +75,47 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
     }
 
     @Override
-    public void onTerminalSolved(@NonNull String solvedWord) {
-        // TODO
-        adapter.onTerminalSolved(solvedWord);
+    public void onTerminalSolverFinished(String solvedWord) {
+        undoButton.setEnabled(false);
+        restartButton.setEnabled(false);
+
+        if(solvedWord != null)
+            adapter.onTerminalSolverFinished(solvedWord);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.StackedAlertDialogStyle);
+        AlertDialog dialog =
+                builder.setTitle(R.string.alert_solver_finished_title_text)
+               .setMessage(getSolvedMessage(solvedWord))
+               .setPositiveButton(R.string.alert_solver_finished_home, new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       Intent homeIntent = new Intent(EliminationActivity.this, MainActivity.class);
+                       startActivity(homeIntent);
+                       finish();
+                   }
+               })
+               .setNegativeButton(R.string.alert_solver_finished_input, new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       finish();
+                   }
+               })
+               .setNeutralButton(R.string.alert_solver_finished_restart, new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       adapter.getSolver().restart();
+                   }
+               })
+               .setCancelable(false)
+               .create();
+        dialog.show();
+    }
+
+    private String getSolvedMessage(String solvedWord){
+        if(solvedWord == null)
+            return getString(R.string.alert_solver_finished_not_solved_text);
+        else
+            return getString(R.string.alert_solver_finished_solved_text, solvedWord);
     }
 
     @Override
