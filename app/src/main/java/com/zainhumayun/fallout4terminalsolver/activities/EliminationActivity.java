@@ -16,6 +16,7 @@ import com.zainhumayun.fallout4terminalsolver.R;
 import com.zainhumayun.fallout4terminalsolver.TerminalSolver;
 import com.zainhumayun.fallout4terminalsolver.inputrecyclerview.EliminationRecyclerViewAdapter;
 import com.zainhumayun.fallout4terminalsolver.models.WordFilter;
+import com.zainhumayun.fallout4terminalsolver.stattracking.StatisticsManager;
 
 import java.util.List;
 
@@ -79,8 +80,10 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
         undoButton.setEnabled(false);
         restartButton.setEnabled(false);
 
-        if(solvedWord != null)
+        if(solvedWord != null) {
             adapter.onTerminalSolverFinished(solvedWord);
+            StatisticsManager.updateStat(StatisticsManager.STATS_KEY_SUM_TERMINALS_HACKED, 1);
+        }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.StackedAlertDialogStyle);
         AlertDialog dialog =
@@ -129,6 +132,8 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
 
     @Override
     public void onFilterApplied(List<String> removedWords, WordFilter filter) {
+        StatisticsManager.updateStat(StatisticsManager.STATS_KEY_SUM_WORDS_ELIMINATED, removedWords.size());
+
         final boolean shouldEnableActions = adapter.getSolver().getHistoryDepth() > 0;
         undoButton.setEnabled(shouldEnableActions);
         restartButton.setEnabled(shouldEnableActions);

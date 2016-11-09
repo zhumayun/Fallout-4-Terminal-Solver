@@ -39,14 +39,29 @@ public class StatisticsManager {
         editor.apply();
     }
 
+    public static int getStat(String key){
+        BaseStatistic stat = findStat(key);
+        if(stat != null){
+            return stat.getStatVal();
+        }
+        return 0;
+    }
+
     public static void updateStat(String key, int newVal){
         // find the stat
+        BaseStatistic stat = findStat(key);
+        if(stat != null) {
+            stat.setNewVal(newVal);
+            writePref(key, stat.getStatVal());
+        }
+    }
+
+    private static BaseStatistic findStat(String key){
         for(BaseStatistic statistic : statistics){
             if(statistic.getPreferenceKey().equals(key)){
-                statistic.setNewVal(newVal);
-                writePref(key, statistic.getStatVal());
-                return;
+                return statistic;
             }
         }
+        return null;
     }
 }
