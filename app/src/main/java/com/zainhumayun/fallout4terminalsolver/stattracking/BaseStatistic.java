@@ -1,18 +1,20 @@
 package com.zainhumayun.fallout4terminalsolver.stattracking;
 
+import android.support.annotation.StringRes;
+
 /**
  * Base class for Statistic classes
  **/
 public abstract class BaseStatistic {
     private String key;
-    private String displayName;
+    private @StringRes int displayName;
     protected int statVal;
 
     public String getPreferenceKey(){
         return key;
     }
 
-    public String getDisplayName(){
+    public int getDisplayName(){
         return displayName;
     }
 
@@ -20,7 +22,7 @@ public abstract class BaseStatistic {
         return statVal;
     }
 
-    public BaseStatistic(String key, String displayName, int statVal){
+    public BaseStatistic(String key, @StringRes int displayName, int statVal){
         this.key = key;
         this.displayName = displayName;
         this.statVal = statVal;
