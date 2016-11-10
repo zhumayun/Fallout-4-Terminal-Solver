@@ -82,7 +82,11 @@ public class EliminationActivity extends HideActionBarActivity implements Termin
 
         if(solvedWord != null) {
             adapter.onTerminalSolverFinished(solvedWord);
+            TerminalSolver solver = adapter.getSolver();
             StatisticsManager.updateStat(StatisticsManager.STATS_KEY_SUM_TERMINALS_HACKED, 1);
+            StatisticsManager.updateStat(StatisticsManager.STATS_KEY_LOWEST_GUESSES, solver.getHistoryDepth());
+            StatisticsManager.updateStat(StatisticsManager.STATS_KEY_HIGHEST_MATCHED_WORD, solver.getLikeness());
+            StatisticsManager.updateDifficultyStat(solver.getDifficulty());
         }
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.StackedAlertDialogStyle);

@@ -1,7 +1,7 @@
 # Fallout-4-Terminal-Solver
 
 ## About
-The Fallout 4 Terminal Solver Android app helps player's of the game [Fallout 4](https://en.wikipedia.org/wiki/Fallout_4) solve ('Hack')
+The Fallout 4 Terminal Solver Android app helps players of the game [Fallout 4](https://en.wikipedia.org/wiki/Fallout_4) solve ('Hack')
 [Terminals](http://fallout.wikia.com/wiki/Terminal). Terminals are essential to finding loot, unlocking new areas, and leveling up your character. Below are a few screen shots of the app solving a Terminal.
 
 ### Input Screen:

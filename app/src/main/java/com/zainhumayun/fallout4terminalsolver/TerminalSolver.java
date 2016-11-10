@@ -16,6 +16,30 @@ public class TerminalSolver {
     private SolverListener listener = null;
     private Stack<History> historyStack = new Stack<>();
 
+    // difficulty enums
+    public enum Difficulty {
+        NOVICE,
+        ADVANCED,
+        EXPERT,
+        MASTER,
+        UNKNOWN
+    }
+
+    // min word length for novice
+    private static final int NOVICE_MIN_LENGTH = 4;
+
+    // max word length for novice
+    private static final int NOVICE_MAX_LENGTH = 5;
+
+    // max word length for advanced
+    private static final int ADVANCED_MAX_LENGTH = 8;
+
+    // max word length for expert
+    private static final int EXPERT_MAX_LENGTH = 10;
+
+    // max word length for master
+    private static final int MASTER_MAX_LENGTH = 12;
+
     public interface SolverListener {
         void onTerminalSolverFinished(String solvedWord);
         void onUndoApplied(List<String> removedWords, WordFilter filter);
@@ -133,6 +157,21 @@ public class TerminalSolver {
 
     public boolean haveAppliedFilters(){
         return getHistoryDepth() != 0;
+    }
+
+    public Difficulty getDifficulty(){
+        if(wordSize < NOVICE_MIN_LENGTH || wordSize > MASTER_MAX_LENGTH)
+            return Difficulty.UNKNOWN;
+        else if(wordSize <= NOVICE_MAX_LENGTH)
+            return Difficulty.NOVICE;
+        else if(wordSize <= ADVANCED_MAX_LENGTH)
+            return Difficulty.ADVANCED;
+        else if(wordSize <= EXPERT_MAX_LENGTH)
+            return Difficulty.EXPERT;
+        else if (wordSize <= MASTER_MAX_LENGTH)
+            return Difficulty.MASTER;
+        else
+            return Difficulty.UNKNOWN;
     }
 
     private static class History {
