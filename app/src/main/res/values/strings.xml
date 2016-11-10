@@ -51,4 +51,6 @@
     <string name="shared_pref_file_name">com.zainhumayun.fallout4terminalsolver.stats</string>
     <string name="stats_terminals_eliminated_name">Terminals Hacked</string>
     <string name="stats_words_eliminated">Words Eliminated</string>
+    <string name="stats_least_guesses">Least Guesses</string>
+    <string name="stats_longest_word">Longest Word Matched</string>
 </resources>

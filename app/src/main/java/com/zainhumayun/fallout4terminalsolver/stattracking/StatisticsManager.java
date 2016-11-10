@@ -16,6 +16,8 @@ public class StatisticsManager {
     // keys
     public static final String STATS_KEY_SUM_TERMINALS_HACKED = "TERMINALS_HACKED";
     public static final String STATS_KEY_SUM_WORDS_ELIMINATED = "WORDS_ELIMINATED";
+    public static final String STATS_KEY_LOWEST_GUESSES = "LEAST_GUESSES";
+    public static final String STATS_KEY_HIGHEST_MATCHED_WORD = "HIGHEST_WORD";
 
     // should only be called once
     public static void init(Application application){
@@ -24,6 +26,8 @@ public class StatisticsManager {
         // load stats
         statistics.add(new SumStatistic(STATS_KEY_SUM_TERMINALS_HACKED, R.string.stats_terminals_eliminated_name, readPref(STATS_KEY_SUM_TERMINALS_HACKED)));
         statistics.add(new SumStatistic(STATS_KEY_SUM_WORDS_ELIMINATED, R.string.stats_words_eliminated, readPref(STATS_KEY_SUM_WORDS_ELIMINATED)));
+        statistics.add(new LowestStatistic(STATS_KEY_LOWEST_GUESSES, R.string.stats_least_guesses, readPref(STATS_KEY_LOWEST_GUESSES)));
+        statistics.add(new HighestStatistic(STATS_KEY_HIGHEST_MATCHED_WORD, R.string.stats_longest_word, readPref(STATS_KEY_HIGHEST_MATCHED_WORD)));
     }
 
     private static int readPref(String key){
