@@ -151,4 +151,96 @@ public class TerminalSolverTest {
         assertFalse(solver.isSolved());
         assertEquals(5, solver.getNumWordsLeft());
     }
+
+    @Test
+    public void noviceTest(){
+        TerminalSolver solver = getSolverInstance(
+                "FIVE",
+                "FOUR"
+        );
+        assertEquals(TerminalSolver.Difficulty.NOVICE, solver.getDifficulty());
+
+        solver = getSolverInstance(
+                "FIVES",
+                "FOURS"
+        );
+
+        assertEquals(TerminalSolver.Difficulty.NOVICE, solver.getDifficulty());
+    }
+
+    @Test
+    public void advancedTest(){
+        TerminalSolver solver = getSolverInstance(
+                "666666",
+                "777777",
+                "888888"
+        );
+
+        assertEquals(TerminalSolver.Difficulty.ADVANCED, solver.getDifficulty());
+
+        solver = getSolverInstance(
+                "6666666",
+                "7777777",
+                "8888888"
+        );
+
+        assertEquals(TerminalSolver.Difficulty.ADVANCED, solver.getDifficulty());
+
+        solver = getSolverInstance(
+                "66666666",
+                "77777777",
+                "88888888"
+        );
+
+        assertEquals(TerminalSolver.Difficulty.ADVANCED, solver.getDifficulty());
+    }
+
+    @Test
+    public void expertTest(){
+        TerminalSolver solver = getSolverInstance(
+                "999999999",
+                "101010101"
+        );
+
+        assertEquals(TerminalSolver.Difficulty.EXPERT, solver.getDifficulty());
+
+        solver = getSolverInstance(
+                "9999999999",
+                "1010101010"
+        );
+
+        assertEquals(TerminalSolver.Difficulty.EXPERT, solver.getDifficulty());
+    }
+
+    @Test
+    public void masterTest(){
+        TerminalSolver solver = getSolverInstance(
+                "11111111111",
+                "22222222222"
+        );
+
+        assertEquals(TerminalSolver.Difficulty.MASTER, solver.getDifficulty());
+
+        solver = getSolverInstance(
+                "111111111111",
+                "222222222222"
+        );
+
+        assertEquals(TerminalSolver.Difficulty.MASTER, solver.getDifficulty());
+    }
+
+    @Test
+    public void unknownTest(){
+        TerminalSolver solver = getSolverInstance(
+                "333"
+        );
+
+        assertEquals(TerminalSolver.Difficulty.UNKNOWN, solver.getDifficulty());
+
+        solver = getSolverInstance(
+                "2342359238752349857239875"
+        );
+
+        assertEquals(TerminalSolver.Difficulty.UNKNOWN, solver.getDifficulty());
+    }
 }
