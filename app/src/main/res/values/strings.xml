@@ -14,6 +14,11 @@
     <string name="word_elimination_activity_title_text">Word Elimination</string>
     <string name="word_elimination_activity_sub_title_text">Tap on items below</string>
 
+    <!-- Statistics Activity Related Strings -->
+    <string name="stats_activity_header_aggregate">Aggregate Scores</string>
+    <string name="stats_activity_header_best_scores">Best Scores</string>
+    <string name="stats_activity_header_difficulty">Terminal Difficulty</string>
+
     <!-- Button Text -->
     <string name="button_text_back">Back</string>
     <string name="button_text_add">Add</string>

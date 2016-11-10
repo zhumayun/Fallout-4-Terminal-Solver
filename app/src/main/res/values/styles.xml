@@ -86,4 +86,11 @@
         <item name="android:textSize">14sp</item>
         <item name="android:layout_alignParentTop">false</item>
     </style>
+
+    <style name="stat_row_text_style">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textSize">26sp</item>
+    </style>
 </resources>

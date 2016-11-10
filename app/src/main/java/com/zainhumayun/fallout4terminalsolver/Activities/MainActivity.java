@@ -17,6 +17,7 @@ public class MainActivity extends HideActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button start = (Button) findViewById(R.id.main_activity_button_start);
+        View statsButton = findViewById(R.id.main_activity_stats_button);
 
         // change colour of start button
         start.getBackground().setColorFilter(ContextCompat.getColor(this, R.color.colorAccent), PorterDuff.Mode.SRC_ATOP);
@@ -26,6 +27,14 @@ public class MainActivity extends HideActionBarActivity {
             public void onClick(View v) {
                 Intent inputActvityIntent = new Intent(MainActivity.this, InputWordsActivity.class);
                 startActivity(inputActvityIntent);
+            }
+        });
+
+        statsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent statsIntent = new Intent(MainActivity.this, StatisticsActivity.class);
+                startActivity(statsIntent);
             }
         });
     }

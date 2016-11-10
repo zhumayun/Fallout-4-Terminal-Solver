@@ -30,5 +30,9 @@
             android:name=".activities.EliminationActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activities.StatisticsActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 </manifest>
