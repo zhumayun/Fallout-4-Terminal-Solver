@@ -26,6 +26,7 @@ public class StatisticsManager {
     public static final String STATS_KEY_MOST_MASTER = "MASTER_SUM";
     public static final String STATS_KEY_MOST_UNKNOWN = "UNKNOWN_SUM";
 
+
     // should only be called once
     public static void init(Application application){
         statsHolder = application.getSharedPreferences(application.getString(R.string.shared_pref_file_name), Context.MODE_PRIVATE);
@@ -56,7 +57,18 @@ public class StatisticsManager {
         editor.apply();
     }
 
-    public static int getStat(String key){
+    public static List<BaseStatistic> getStatistics(String[] searchSet){
+        List<BaseStatistic> foundStats = new ArrayList<>();
+        for(String key : searchSet){
+            BaseStatistic statistic = findStat(key);
+            if(key != null)
+                foundStats.add(statistic);
+        }
+
+        return foundStats;
+    }
+
+    public static int getStatistic(String key){
         BaseStatistic stat = findStat(key);
         if(stat != null){
             return stat.getStatVal();

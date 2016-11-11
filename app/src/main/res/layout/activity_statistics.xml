@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
 
-</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Activity Title -->
+        <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
+            style="@style/activity_header_title_style"
+            android:text="@string/stats_activity_title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Total Amount Section -->
+        <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
+            style="@style/stat_header_text_style"
+            android:text="@string/stats_activity_header_aggregate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/stats_total_container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+
+        <!-- Best Scores Section -->
+        <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
+            style="@style/stat_header_text_style"
+            android:text="@string/stats_activity_header_best_scores"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/stats_best_scores_container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+
+        <!-- Difficulty Section -->
+        <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
+            style="@style/stat_header_text_style"
+            android:text="@string/stats_activity_header_difficulty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/stats_difficulty_container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
