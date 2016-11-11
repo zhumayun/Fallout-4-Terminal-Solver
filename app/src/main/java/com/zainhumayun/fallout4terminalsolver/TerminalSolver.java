@@ -64,6 +64,11 @@ public class TerminalSolver {
         History historyItem = new History(filter);
 
         if(filter.getLikeness() == wordSize){
+            for(String word : wordsLeft){
+                if(!word.equals(filter.getWord()))
+                    historyItem.addRemovedWord(word);
+            }
+
             wordsLeft = new ArrayList<>();
             wordsLeft.add(filter.getWord());
         } else {

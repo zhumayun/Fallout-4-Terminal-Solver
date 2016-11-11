@@ -12,6 +12,9 @@ public class LowestStatistic extends BaseStatistic {
 
     @Override
     public void setNewVal(int newVal) {
-        statVal = Math.min(statVal, newVal);
+        if(statVal >= 0)
+            statVal = Math.min(statVal, newVal);
+        else
+            statVal = newVal;
     }
 }

@@ -34,7 +34,7 @@ public class StatisticsManager {
         // load stats
         statistics.add(new SumStatistic(STATS_KEY_SUM_TERMINALS_HACKED, R.string.stats_terminals_eliminated_name, readPref(STATS_KEY_SUM_TERMINALS_HACKED)));
         statistics.add(new SumStatistic(STATS_KEY_SUM_WORDS_ELIMINATED, R.string.stats_words_eliminated, readPref(STATS_KEY_SUM_WORDS_ELIMINATED)));
-        statistics.add(new LowestStatistic(STATS_KEY_LOWEST_GUESSES, R.string.stats_least_guesses, readPref(STATS_KEY_LOWEST_GUESSES)));
+        statistics.add(new LowestStatistic(STATS_KEY_LOWEST_GUESSES, R.string.stats_least_guesses, readPref(STATS_KEY_LOWEST_GUESSES, -1)));
         statistics.add(new HighestStatistic(STATS_KEY_HIGHEST_MATCHED_WORD, R.string.stats_longest_word, readPref(STATS_KEY_HIGHEST_MATCHED_WORD)));
         // difficulty stats
         statistics.add(new SumStatistic(STATS_KEY_MOST_NOVICE, R.string.stats_solved_amount_novice, readPref(STATS_KEY_MOST_NOVICE)));
@@ -45,10 +45,14 @@ public class StatisticsManager {
     }
 
     private static int readPref(String key){
-        if(statsHolder == null)
-            return 0;
+        return readPref(key, 0);
+    }
 
-        return statsHolder.getInt(key, 0);
+    private static int readPref(String key, int defaultVal){
+        if(statsHolder == null)
+            return defaultVal;
+
+        return statsHolder.getInt(key, defaultVal);
     }
 
     private static void writePref(String key, int val){

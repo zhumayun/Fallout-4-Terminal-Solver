@@ -70,7 +70,11 @@ public class StatisticsActivity extends HideActionBarActivity {
             TextView score = (TextView) rootView.findViewById(R.id.stat_row_value);
 
             title.setText(statistic.getDisplayName());
-            score.setText("" + statistic.getStatVal());
+
+            if(statistic.getStatVal() >= 0)
+                score.setText("" + statistic.getStatVal());
+            else
+                score.setText("--");
 
             container.addView(rootView);
         }
