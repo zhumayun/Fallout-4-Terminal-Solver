@@ -64,4 +64,9 @@
     <string name="stats_solved_amount_expert">Expert Solved</string>
     <string name="stats_solved_amount_master">Master Solved</string>
     <string name="stats_solved_amount_unknown">Unknown Solved</string>
+
+    <!-- App shortcut strings -->
+    <string name="shortcut_start_new_short_label">Solve Terminal</string>
+    <string name="shortcut_start_new_long_label">Solve Terminal</string>
+    <string name="shortcut_start_new_disabled">Unable to launch Solve Terminal shortcut</string>
 </resources>
