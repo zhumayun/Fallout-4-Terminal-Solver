@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut
+        android:shortcutId="viewstats"
+        android:enabled="true"
+        android:icon="@drawable/sc_stats"
+        android:shortcutShortLabel="@string/shortcut_stats_short_label"
+        android:shortcutLongLabel="@string/shortcut_stats_long_label"
+        android:shortcutDisabledMessage="@string/shortcut_stats_disabled">
+
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.zainhumayun.fallout4terminalsolver"
+            android:targetClass="com.zainhumayun.fallout4terminalsolver.activities.StatisticsActivity" />
+    </shortcut>
+
+    <shortcut
         android:shortcutId="startnew"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/sc_start_new"
         android:shortcutShortLabel="@string/shortcut_start_new_short_label"
         android:shortcutLongLabel="@string/shortcut_start_new_long_label"
         android:shortcutDisabledMessage="@string/shortcut_start_new_disabled">

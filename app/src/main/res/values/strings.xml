@@ -69,4 +69,7 @@
     <string name="shortcut_start_new_short_label">Solve Terminal</string>
     <string name="shortcut_start_new_long_label">Solve Terminal</string>
     <string name="shortcut_start_new_disabled">Unable to launch Solve Terminal shortcut</string>
+    <string name="shortcut_stats_short_label">View Stats</string>
+    <string name="shortcut_stats_long_label">View Stats</string>
+    <string name="shortcut_stats_disabled">Unable to launch View Stats shortcut</string>
 </resources>

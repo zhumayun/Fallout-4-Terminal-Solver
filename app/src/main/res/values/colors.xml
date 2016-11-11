@@ -6,4 +6,5 @@
     <color name="hintColor">#a3a2a2</color>
     <color name="filteredColor">#55d22c</color>
     <color name="eliminatedColor">#bab9b9</color>
+    <color name="sc_background">#F5F5F5</color>
 </resources>

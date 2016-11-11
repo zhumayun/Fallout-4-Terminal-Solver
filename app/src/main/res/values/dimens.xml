@@ -11,4 +11,5 @@
 
     <dimen name="row_vertical_padding">8dp</dimen>
     <dimen name="row_vertical_margin">2dp</dimen>
+    <dimen name="shortcut_circle_padding">16dp</dimen>
 </resources>
