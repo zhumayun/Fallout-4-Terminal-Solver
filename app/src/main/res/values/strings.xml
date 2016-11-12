@@ -87,6 +87,15 @@
     </string>
 
     <string name="about_heading_how_it_works">How to Use</string>
+    <string name="about_how_it_works_content">
+        <ol>
+            <li>Click start and start typing the words into the input boxes. You can press done on the soft keybaord to quickly add new words.\n\n</li>
+            <li>After all words have been given, tap next to proceed to the elimination screen. Make sure all the words are uppercase.\n\n</li>
+            <li>Tap on the yellow words apply them as a filter. Give in the likeness that the terminal in Fallout 4 has given you for that word.\n\n</li>
+            <li>Repeat until the solver is done. Green words are applied filters (words selected in the Terminal). Grey words are ones that are eliminated and cannot be the terminal password.\n\n</li>
+        </ol>
+    </string>
 
     <string name="about_heading_credits">Credit</string>
+    <string name="about_credit_content">This application was entirely created by Zain Humayun and is open sourced GitHub.</string>
 </resources>

@@ -20,6 +20,8 @@ public class AboutActivity extends HideActionBarActivity {
 
         sectionContainer = (LinearLayout) findViewById(R.id.about_section_container);
         addSection(R.string.about_heading_features, R.string.about_features_content);
+        addSection(R.string.about_heading_how_it_works, R.string.about_how_it_works_content);
+        addSection(R.string.about_heading_credits, R.string.about_credit_content);
     }
 
     private void addSection(@StringRes int headerText, @StringRes int contentText){
