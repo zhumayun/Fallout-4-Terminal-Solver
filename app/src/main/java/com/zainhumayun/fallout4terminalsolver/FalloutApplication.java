@@ -16,18 +16,5 @@ public class FalloutApplication extends Application {
     public void onCreate() {
         super.onCreate();
         StatisticsManager.init(this);
-
-        /*
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-            ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);
-
-            ShortcutInfo startShortCut = new ShortcutInfo.Builder(this, "startnew")
-                    .setShortLabel(getString(R.string.shortcut_start_new_short_label))
-                    .setLongLabel(getString(R.string.shortcut_start_new_long_label))
-                    .setDisabledMessage(getString(R.string.shortcut_start_new_disabled))
-                    .setIntent(new Intent(this, InputWordsActivity.class))
-                    .build();
-            shortcutManager.setDynamicShortcuts(Arrays.asList(startShortCut));
-        }*/
     }
 }
