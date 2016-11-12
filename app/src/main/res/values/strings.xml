@@ -72,4 +72,21 @@
     <string name="shortcut_stats_short_label">View Stats</string>
     <string name="shortcut_stats_long_label">View Stats</string>
     <string name="shortcut_stats_disabled">Unable to launch View Stats shortcut</string>
+
+    <!-- About Strings -->
+    <string name="about_activity_title">About</string>
+    <string name="about_heading_features">Features</string>
+    <string name="about_features_content">
+        <ul>
+            <li>Solve Terminals with by just tapping on words.\n</li>
+            <li>Undo lets you correct mistakes without restarting.\n</li>
+            <li>Restart the solver if you need to.\n</li>
+            <li>Stat tracking.\n</li>
+            <li>On devices with Android 7.1, use built in app shortcuts to view stats or solve a terminal.\n</li>
+        </ul>
+    </string>
+
+    <string name="about_heading_how_it_works">How to Use</string>
+
+    <string name="about_heading_credits">Credit</string>
 </resources>

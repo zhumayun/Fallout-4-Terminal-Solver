@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:id="@+id/about_section_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Activity Title -->
+        <com.zainhumayun.fallout4terminalsolver.views.CondensedTextView
+            style="@style/activity_header_title_style"
+            android:text="@string/about_activity_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>
