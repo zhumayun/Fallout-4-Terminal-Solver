@@ -119,7 +119,7 @@ public class InputRecyclerViewAdapter extends RecyclerView.Adapter<InputRecycler
         ArrayList<String> stringItems = new ArrayList<>();
 
         for(StringInputItem item : dataSet)
-            stringItems.add(item.getString());
+            stringItems.add(item.getString().toUpperCase());
 
         return stringItems;
     }
