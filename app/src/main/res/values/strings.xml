@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Fallout 4 Terminal Solver</string>
+    <string name="app_name">Terminal Solver</string>
 
     <!-- Main Activity Related Strings -->
     <string name="main_activity_title_text">@string/app_name</string>
