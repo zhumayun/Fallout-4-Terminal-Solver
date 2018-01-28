@@ -1,6 +1,5 @@
 package com.zainhumayun.fallout4terminalsolver.inputrecyclerview;
 
-import android.content.Context;
 import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -10,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -108,11 +106,13 @@ public class InputRecyclerViewAdapter extends RecyclerView.Adapter<InputRecycler
     }
 
     private void removeRow(int position){
-        dataSet.remove(position);
-        notifyItemRemoved(position);
+        if (position != RecyclerView.NO_POSITION) {
+            dataSet.remove(position);
+            notifyItemRemoved(position);
 
-        if(listener != null)
-            listener.onNumberOfRowsChanged(getItemCount());
+            if(listener != null)
+                listener.onNumberOfRowsChanged(getItemCount());
+        }
     }
 
     public ArrayList<String> getDataSet(){
